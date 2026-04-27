@@ -13,56 +13,103 @@ function clankerChoice (){
         return "scissors"
 }
 
-function humanChoice(){
-    let option = prompt("Enter yo choice gang");
-    return option.toLowerCase();
-}
 
 function playRound(cHuman, cClanker){
     if(cHuman==="rock" && cClanker==="scissors"){
         playerScore += 1;
-        console.log("Rock shatters the scissor. human wins")
+        humanScore.textContent = playerScore
+        result.textContent = "Rock shatters the scissor. human wins"
     }
-    if(cHuman==="paper" && cClanker==="rock"){
+    else if(cHuman==="paper" && cClanker==="rock"){
         playerScore += 1;
-        console.log("paper grabs the rock. human wins")
+        humanScore.textContent = playerScore
+        result.textContent = "paper grabs the rock. human wins"
     }
-    if(cHuman==="scissors" && cClanker==="paper"){
+    else if(cHuman==="scissors" && cClanker==="paper"){
         playerScore += 1;
-        console.log("scissors shreds the paper. human wins")
+        humanScore.textContent = playerScore
+        result.textContent = "scissors shreds the paper. human wins"
     }
 
 
-    if(cClanker=== "rock" && cHuman=== "scissors"){
+    else if(cClanker=== "rock" && cHuman=== "scissors"){
         clankerScore += 1;
-        console.log("Rock shatters the scissor. Clanker wins")
+        machineScore.textContent = clankerScore
+        result.textContent = "Rock shatters the scissor. Clanker wins"
     }
-    if(cClanker=== "paper" && cHuman=== "rock"){
+    else if(cClanker=== "paper" && cHuman=== "rock"){
         clankerScore += 1;
-        console.log("paper grabs the rock. Clanker wins")
+        machineScore.textContent = clankerScore
+        result.textContent = "paper grabs the rock. Clanker wins"
     }
-    if(cClanker=== "scissors" && cHuman=== "paper"){
+    else if(cClanker=== "scissors" && cHuman=== "paper"){
         clankerScore += 1;
-        console.log("scissors shreds the paper. Clanker wins")
+        machineScore.textContent = clankerScore
+        result.textContent = "scissors shreds the paper. Clanker wins"
     }
     
 
     else{
         draw += 1;
-        console.log("Its a draw.")
+        dDraw.textContent = draw
+        result.textContent = "Its a draw."
     }
 }
  /*option is outside the loop, so it would act like a reverse do while i think lol, cuz it will play one more game before stopping, */
-function playGame(){
-    for (let i=1; i<=5; i++){
-        playRound(clankerChoice() ,humanChoice())
-    }
-    if (playerScore>clankerScore)
-        alert ("Player won. Score= " + playerScore)
-    else if (playerScore<clankerScore)
-        alert("Clanker won. Score =" + clankerScore)
-    else
-        alert ("its a draw. Score =" + draw)
-}
 
-playGame();
+
+
+
+/* set of code which waits for button click and then calls for playGame function*/
+
+    let option = document.querySelector("#rock")
+    let humanShow = document.querySelector("#humanShow")
+    let humanScore = document.querySelector("#humanScore")
+    let machineScore = document.querySelector("#machineScore")
+    let dDraw = document.querySelector("#draws")
+    let result = document.querySelector("#result")
+    let clankerShow = document.querySelector("#machineShow")
+    option.addEventListener("click", () => {
+        let machine = clankerChoice()
+        clankerShow.textContent = machine.toUpperCase()
+        playRound("rock", machine)
+        humanShow.textContent = "ROCK"
+    })
+
+    option = document.querySelector("#paper")
+    option.addEventListener("click", () => {
+        let machine = clankerChoice()
+        clankerShow.textContent = machine.toUpperCase()
+        playRound("paper", machine)
+        humanShow.textContent = "PAPER"
+    })
+
+    option = document.querySelector("#scissors")
+    option.addEventListener("click", () => {
+        let machine = clankerChoice()
+        clankerShow.textContent = machine.toUpperCase()
+        playRound("scissors", machine)
+        humanShow.textContent = "SCISSORS"
+    })
+
+
+
+/* set of code which updates the choices on the front-end side*/
+
+
+    let display = document.querySelector("#display")
+    let winDisplay = document.querySelector("#result")
+        option.addEventListener("click", () => {
+        if (playerScore>clankerScore){
+            display.textContent = playerScore
+            winDisplay.textContent = "Player won"
+        }
+        else if (playerScore<clankerScore){
+            display.textContent = clankerScore
+            winDisplay.textContent = "Clanker won"
+        }
+        else{
+            display.textContent = draw
+            winDisplay.textContent = "Draw"
+        }
+    })

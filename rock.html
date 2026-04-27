@@ -3,9 +3,34 @@
     <head>
         <meta charset="UTF-8">
         <title>paper</title>
+         <link rel="stylesheet" href="rock.css">
     </head>
     <body>
-        <div> goofball </div>
+        <h1 id="heading"> ROCK PAPER SCISSOR </h1>
+        <h2 id="followUp"> Human vs Machine </h2>
+
+        <div>
+            <div id="choice">
+                <div> HUMAN'S CHOICE: <span id="humanShow"> </span> </div>
+                <div> MACHINE'S CHOICE: <span id="machineShow"> </span></div>
+            </div>
+
+            <div id="Score">
+                <div> Human's Score: <span id="humanScore"> </span> </div>
+                <div> Machine's score: <span id="machineScore"> </span> </div>
+                <div> Number of draws: <span id="draws"> </span> </div>
+            </div>
+
+            <div id="button" class="padding">
+                <button id="rock"> ROCK </button>
+                <button id="paper"> PAPER </button>
+                <button id="scissors"> SCISSORS </button>
+            </div>
+        </div>
+
+        <div id="result">  </div>
+        
+        <div id="peak"> goofball </div>
         <script src="paper.js"></script>
     </body>
 </html>
