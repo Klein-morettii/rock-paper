@@ -13,7 +13,7 @@ function clankerChoice (){
         return "scissors"
 }
 
-
+/* following code updates the score variables as well as updates the front end screen with said score*/
 function playRound(cHuman, cClanker){
     if(cHuman==="rock" && cClanker==="scissors"){
         playerScore += 1;
@@ -55,7 +55,7 @@ function playRound(cHuman, cClanker){
         result.textContent = "Its a draw."
     }
 }
- /*option is outside the loop, so it would act like a reverse do while i think lol, cuz it will play one more game before stopping, */
+
 
 
 
@@ -92,24 +92,3 @@ function playRound(cHuman, cClanker){
         humanShow.textContent = "SCISSORS"
     })
 
-
-
-/* set of code which updates the choices on the front-end side*/
-
-
-    let display = document.querySelector("#display")
-    let winDisplay = document.querySelector("#result")
-        option.addEventListener("click", () => {
-        if (playerScore>clankerScore){
-            display.textContent = playerScore
-            winDisplay.textContent = "Player won"
-        }
-        else if (playerScore<clankerScore){
-            display.textContent = clankerScore
-            winDisplay.textContent = "Clanker won"
-        }
-        else{
-            display.textContent = draw
-            winDisplay.textContent = "Draw"
-        }
-    })
